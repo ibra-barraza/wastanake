@@ -1,0 +1,38 @@
+{% extends "users/auth_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block card_title %}Registro de Agricultor{% endblock %}
+
+{% block form_content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row g-3">
+        <div class="col-md-6">
+            {{ form.username|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ form.email|as_crispy_field }}
+        </div>
+        <div class="col-12">
+            {{ form.phone|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password1|as_crispy_field }}
+        </div>
+        <div class="col-md-6">
+            {{ form.password2|as_crispy_field }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success w-100 mt-4">
+        <i class="bi bi-person-plus"></i> Registrarse
+    </button>
+</form>
+{% endblock %}
+
+{% block card_footer %}
+<div class="text-center mt-3">
+    <small class="text-muted">
+        ¿Ya tienes cuenta? <a href="{% url 'login' %}" class="text-success">Ingresa aquí</a>
+    </small>
+</div>
+{% endblock %}
