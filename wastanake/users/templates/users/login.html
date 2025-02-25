@@ -1,0 +1,27 @@
+{% extends "users/auth_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block card_title %}Acceso Agricultores{% endblock %}
+
+{% block form_content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.username|as_crispy_field }}
+    </div>
+    <div class="mb-4">
+        {{ form.password|as_crispy_field }}
+    </div>
+    <button type="submit" class="btn btn-success w-100">
+        <i class="bi bi-box-arrow-in-right"></i> Ingresar
+    </button>
+</form>
+{% endblock %}
+
+{% block card_footer %}
+<div class="text-center mt-3">
+    <small class="text-muted">
+        ¿Primera vez? <a href="{% url 'register' %}" class="text-success">Crea una cuenta</a>
+    </small>
+</div>
+{% endblock %}

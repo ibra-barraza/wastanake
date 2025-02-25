@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-success">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-door-open"></i>
+                        {% block card_title %}{% endblock %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    {% block form_content %}{% endblock %}
+                </div>
+                <div class="card-footer bg-light">
+                    {% block card_footer %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

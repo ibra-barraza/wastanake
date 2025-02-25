@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-success">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-clipboard-data"></i>
+                        Análisis de {{ terrain.name }}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <p>Aquí se mostrara un analisis detallado de: {{ terrain.name }}. Por ahora, esta vacío.</p>
+                    <a href="{% url 'home' %}" class="btn btn-outline-success">Volver a Mis Terrenos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
