@@ -12,7 +12,25 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <p>Aquí se mostrara un analisis detallado de: {{ terrain.name }}. Por ahora, esta vacío.</p>
+                    <p>Se han analizado los cultivos recomendados según el clima actual.</p>
+                    <table class="table table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th>Nombre del cultivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for crop in crops %}
+                            <tr>
+                                <td>{{ crop }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="1" class="text-center">No se encontraron cultivos recomendados.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                     <a href="{% url 'home' %}" class="btn btn-outline-success">Volver a Mis Terrenos</a>
                 </div>
             </div>

@@ -4,12 +4,13 @@ from .models import Terrain
 class TerrainForm(forms.ModelForm):
     class Meta:
         model = Terrain
-        fields = ['name', 'size', 'soil_type', 'ph_level', 'latitude', 'longitude']
+        fields = ['name', 'size', 'soil_type', 'ph_level', 'climate_zone', 'latitude', 'longitude']
         labels = {
             'name': 'Nombre del Terreno',
             'size': 'Tamaño (hectáreas)',
             'soil_type': 'Tipo de Suelo',
             'ph_level': 'Nivel de pH',
+            'climate_zone': 'Zona Climática',
             'latitude': 'Latitud',
             'longitude': 'Longitud'
         }
