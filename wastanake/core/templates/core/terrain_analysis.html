@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow-lg border-success">
                 <div class="card-header bg-success text-white">
                     <h4 class="mb-0">
@@ -12,26 +12,49 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <p>Se han analizado los cultivos recomendados según el clima actual.</p>
-                    <table class="table table-bordered">
-                        <thead class="table-success">
-                            <tr>
-                                <th>Nombre del cultivo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for crop in crops %}
-                            <tr>
-                                <td>{{ crop }}</td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td colspan="1" class="text-center">No se encontraron cultivos recomendados.</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <a href="{% url 'home' %}" class="btn btn-outline-success">Volver a Mis Terrenos</a>
+                    <p>Ranking de cultivos que se adapta específicamente a las características únicas de tu terreno y el rango de fechas proporcionadas.</p>
+                    <div class="alert alert-info mb-4">
+                        <strong>Período analizado:</strong><br>
+                        <i class="bi bi-calendar-event"></i> Fecha de inicio: {{ start_date }}<br>
+                        <i class="bi bi-calendar-event-fill"></i> Fecha de fin: {{ end_date }}
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Cultivo</th>
+                                    <th>Precio Promedio (LCU/t)</th>
+                                    <th>Rendimiento (kg/ha)</th>
+                                    <th>Producción (t)</th>
+                                    <th>Puntuación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for crop in crops %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><strong>{{ crop.Item }}</strong></td>
+                                    <td>{{ crop.Avg_Price|floatformat:2 }}</td>
+                                    <td>{{ crop.Yield_mean|floatformat:2 }}</td>
+                                    <td>{{ crop.Production_mean|floatformat:2 }}</td>
+                                    <td class="fw-bold">{{ crop.Final_Score|floatformat:1 }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="6" class="text-center">No se encontraron cultivos recomendados.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'home' %}" class="btn btn-outline-success">
+                            <i class="bi bi-arrow-left"></i> Volver a Mis Terrenos
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

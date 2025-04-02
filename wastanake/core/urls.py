@@ -7,4 +7,5 @@ urlpatterns = [
     path('editar-terreno/<int:terrain_id>/', views.edit_terrain, name='edit_terrain'),
     path('eliminar-terreno/<int:terrain_id>/', views.delete_terrain, name='delete_terrain'),
     path('analisis-terreno/<int:terrain_id>/', views.terrain_analysis, name='terrain_analysis'),
+    path('seleccionar-fechas-analisis/<int:terrain_id>/', views.select_analysis_dates, name='select_analysis_dates'),
 ]
